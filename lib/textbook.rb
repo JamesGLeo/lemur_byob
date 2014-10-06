@@ -11,6 +11,14 @@ class Textbook
     end
   end
 
+  def last_entry
+    row  = CSV.read(@pagesource).last
+    header, article, timestamp = row
+    str = "Header: #{header}\n"
+    str << "Time: #{timestamp}\n"
+    str << "Article: #{article}"
+  end
+
   def to_s
     str = ""
     CSV.read(@pagesource).each do |row|

@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/rg'
 require 'rack/test'
 require 'tempfile'
+require 'pry'
 require_relative '../app'
 
 class WebAppTest < Minitest::Test
@@ -21,7 +22,6 @@ class WebAppTest < Minitest::Test
   end
 
   def test_returns_two_entries_too
-    skip
     file = 'test/fixtures/two_entries.csv'
     app.set :blog_storage, file
     get '/entries'
@@ -29,14 +29,14 @@ class WebAppTest < Minitest::Test
     header = "Header: The life of Pie"
     assert last_response.body.include?(header)
     header = "Header: Letter from Dorothy"
+    assert last_response.body.include?(header)
   end
 
   def test_can_add_a_new_entry
-    skip
     file = Tempfile.new('blog')
     file.close
     app.set :blog_storage, file
-    post '/entry', {
+    post '/entries', {
                     'header' => 'Writing a blog in Sinatra',
                     'timestamp' => Time.new(2014, 10, 1, 14, 30, 27),
                     'article' => 'This is really fun!'
@@ -52,7 +52,6 @@ class WebAppTest < Minitest::Test
   end
 
   def test_bonus_return_the_last_page
-    skip
     app.set :blog_storage, 'test/fixtures/two_entries.csv'
     get '/last_entry'
     header = 'Dorothy'
