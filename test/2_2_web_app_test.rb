@@ -21,6 +21,7 @@ class WebAppTest < Minitest::Test
   end
 
   def test_returns_two_entries_too
+    skip
     file = 'test/fixtures/two_entries.csv'
     app.set :blog_storage, file
     get '/entries'
@@ -31,6 +32,7 @@ class WebAppTest < Minitest::Test
   end
 
   def test_can_add_a_new_entry
+    skip
     file = Tempfile.new('blog')
     file.close
     app.set :blog_storage, file
@@ -50,6 +52,7 @@ class WebAppTest < Minitest::Test
   end
 
   def test_bonus_return_the_last_page
+    skip
     app.set :blog_storage, 'test/fixtures/two_entries.csv'
     get '/last_entry'
     header = 'Dorothy'
