@@ -22,7 +22,6 @@ class PageTest < Minitest::Test
   end
 
   def test_begins_with_an_empty_article
-    skip
     expected = ""
     actual = @page.article
     assert_equal(expected, actual, "page.article must return an empty string in this test")

@@ -6,4 +6,8 @@ class Page
   def header=(text)
     @header = text
   end
+
+  def article
+    ""
+  end
 end
