@@ -14,7 +14,6 @@ class PageTest < Minitest::Test
   end
 
   def test_can_assign_text_to_the_header
-    skip
     expected = "Wherein we learn whether it doth blend"
     @page.header = expected
     # Okay now let's see what's in the object
