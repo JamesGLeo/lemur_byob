@@ -38,7 +38,6 @@ class TextbookTest < Minitest::Test
   end
 
   def test_shows_multiple_pages
-    skip
     expected_data = page_data
     second_expected_data = second_page_data
     page = Page.new(expected_data)
@@ -55,7 +54,6 @@ class TextbookTest < Minitest::Test
   end
 
   def test_reads_from_an_existing_file
-    skip
     expected_data = page_data
     second_expected_data = second_page_data
     page = Page.new(expected_data)
@@ -65,7 +63,7 @@ class TextbookTest < Minitest::Test
     textbook.insert(page)
     textbook.insert(page2)
 
-    textbook2 = Textbook.new(page_source)
+    textbook2 = Textbook.new(textbook.pagesource)
 
     expected = "Header: #{expected_data["header"]}\nTime: #{expected_data["timestamp"]}\nArticle: #{expected_data["article"]}\nHeader: #{second_expected_data["header"]}\nTime: #{second_expected_data["timestamp"]}\nArticle: #{second_expected_data["article"]}"
     actual = textbook2.to_s
