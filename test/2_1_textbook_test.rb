@@ -43,7 +43,6 @@ class TextbookCSVTest < Minitest::Test
   end
 
   def test_to_s_reads_from_csv_properly
-    skip
     page = Page.new(page_data)
     textbook = Textbook.new(file_name)
     textbook.insert(page)

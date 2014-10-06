@@ -1,5 +1,4 @@
 require 'csv'
-
 class Textbook
   attr_reader :pagesource
   def initialize(file)
@@ -13,6 +12,13 @@ class Textbook
   end
 
   def to_s
-    File.read(@pagesource).chomp
+    str = ""
+    CSV.read(@pagesource).each do |row|
+      header, article, timestamp = row
+      str << "Header: #{header}\n"
+      str << "Time: #{timestamp}\n"
+      str << "Article: #{article}\n"
+    end
+    str.chomp
   end
 end
