@@ -6,7 +6,7 @@ class Textbook
   end
 
   def insert(page)
-    CSV.open(@pagesource, 'wb') do |csv|
+    CSV.open(@pagesource, 'ab') do |csv|
       csv << [page.header, page.article, page.timestamp]
     end
   end
