@@ -1,4 +1,10 @@
 class Page
+  def initialize(options={})
+    @header = options["header"]
+    @article = options["article"]
+    @timestamp = options["timestamp"]
+  end
+
   def header
     @header || ""
   end

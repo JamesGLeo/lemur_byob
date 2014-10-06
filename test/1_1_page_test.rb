@@ -66,7 +66,6 @@ class PageTest < Minitest::Test
   end
 
   def test_can_be_passed_in_values_as_a_hash
-    skip
     expected_data =
       {
        "header" => "The lost Pokemon",
